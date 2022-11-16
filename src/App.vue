@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 let counter = ref(0)
 const increment = () => { counter.value++ }
@@ -8,13 +8,39 @@ const decrement = () => {
 }
 const reset = () => { counter.value = 0 }
 
+const classCounter = computed(() => {
+  if (counter.value === 0) {
+    return "zero";
+  }
+  if (counter.value <= 0) {
+    return "negative";
+  }
+  if (counter.value >= 0) {
+    return "positive";
+  }
+})
+
+const favouriteList = ref([])
+const add = () => {
+  let currentNumber = counter.value
+  favouriteList.value.push(currentNumber)
+}
+const blockButton = computed(() => {
+  const repetedNumber = favouriteList.value.find(number => number === counter.value)
+  return repetedNumber || repetedNumber === 0
+})
 
 </script>
 <template>
-  <p :class="counter <= 0 ? 'negative' : 'positive'">{{ counter }}</p>
+  <p :class="classCounter">{{ counter }}</p>
   <button @click="increment">Increment</button>
   <button @click="decrement">Decrement</button>
   <button @click="reset">Reset</button>
+  <button @click="add" :disabled="blockButton">Add Favourite</button>
+  <ul>
+    <li v-for="(number, idx) in favouriteList" :key="idx">{{ number }}</li>
+  </ul>
+
 </template>
 <style>
 button {
@@ -28,6 +54,14 @@ button {
 .negative {
   color: red;
 }
+
+.zero {
+  color: whitesmoke;
+}
+
+ul {
+  list-style: none;
+}
 </style>
 
 <!-- Se pueden eliminar las etiquetas script y style template es obligatorio  -->
@@ -38,3 +72,7 @@ button {
 <!-- Para prevenir un evento por defecto es con un prevent del evento a prevenir  -->
 <!-- En vue se ovupa el ref para mantener la valor original -->
 <!-- Al agregarle el ref a la varibale original lo estamios colocando como variable reactiva  -->
+<!-- El computed siempre tiene que retornar algo -->
+<!-- Computed nos permite cambiar las clases mediante una condicional -->
+<!-- Cuando se trabaja con datos reactivos se recomienda usar el computed -->
+<!-- Crear un boton que agreue el elmentoi deseado a un array -->

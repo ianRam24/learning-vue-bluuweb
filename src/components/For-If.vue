@@ -65,7 +65,7 @@ const newFruitsArray = [
     <!-- Ahora vamos a recorrer un objeto -->
     <!-- <ul>
     <li v-for="(value, propiedad) in fruit">
-      {{ propiedad }} : {{ value }}
+      {{ propiedad }} : {{ value }} 
     </li>
   </ul> -->
 
