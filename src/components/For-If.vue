@@ -52,8 +52,8 @@ const newFruitsArray = [
 </script>
 <template>
     <!-- El template permite crear el HTML -->
-    <!-- <h1>Hello {{ name }}</h1>
-  <h2 :style="`color: ${colorsArray[2]}`"> Texto subrayado</h2> -->
+    <h1>Hello {{ name }}</h1>
+    <h2 :style="`color: ${colorsArray[2]}`"> Texto subrayado</h2>
     <!-- <h2>{{ isActive ? 'Estoy activado' : 'No Estoy activado' }}</h2>  ->Esto es con una ternaria -->
     <!-- <h2 v-if="isActive">Estoy activo</h2>
   <h2 v-if="!isActive">No Estoy activo</h2> -->
