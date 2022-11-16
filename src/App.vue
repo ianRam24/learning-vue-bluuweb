@@ -1,7 +1,15 @@
-<script setup></script>
-<template></template>
+<script setup>
+const showInConsole = (msg) => { console.log(msg) }
+</script>
+<template>
+  <button @click.left="showInConsole('Left Button')"> Click Me Left</button>
+  <button @click.middle="showInConsole('MiddleButton')"> Click Me Middle</button>
+  <button @click.right.prevent="showInConsole('Right Button')"> Click Me Right</button>
+</template>
 <style>
-
+button {
+  margin-left: 20px;
+}
 </style>
 
 <!-- Se pueden eliminar las etiquetas script y style template es obligatorio  -->
@@ -9,3 +17,4 @@
 <!-- En vue no importa el v-for-of o el v-for-in -->
 <!-- Se pueden terner 2 o mas etiquetas template en un archivo Vue -->
 <!-- La segunda etiquta template viene siendo como el fragment en react -->
+<!-- Para prevenir un evento por defecto es con un prevent del evento a prevenir  -->
